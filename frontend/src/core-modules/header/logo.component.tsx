@@ -13,10 +13,10 @@ const Image = styled.img`
 `;
 
 const SiteTitle = styled.h1`
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   margin-left: 8px;
   font-size: 1.2rem;
+  font-family: 'Quicksand', sans-serif;
 `;
 
 const Logo = () => {
