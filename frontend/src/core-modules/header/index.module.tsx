@@ -1,10 +1,11 @@
 import React from 'react';
 import Container from './container.styled';
+import Logo from './logo.component';
 
 const Header = () => {
   return (
     <Container>
-      <h1>Header</h1>
+      <Logo />
     </Container>
   );
 };

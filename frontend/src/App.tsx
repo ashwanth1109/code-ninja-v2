@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './core-modules/header';
+import Header from './core-modules/header/index.module';
 
 interface AppProps {}
 
