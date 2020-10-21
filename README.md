@@ -2,7 +2,7 @@
 
 ## Technical Architecture Design Decision
 
-### TADD 001:
+### TADD 001: Commit message markers & their meanings
 
 ```md
 - frontend: frontend chore
@@ -28,6 +28,7 @@ general
 
 - refactor
 - bugfix
+- fix (minor fixes)
 - enhancement
 - docs
 - tadd
