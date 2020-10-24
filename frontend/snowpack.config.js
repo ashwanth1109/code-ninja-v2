@@ -3,6 +3,7 @@ module.exports = {
     public: '/',
     src: '/_dist_',
   },
+  scripts: { 'build:css': 'postcss' },
   plugins: [
     '@snowpack/plugin-react-refresh',
     '@snowpack/plugin-dotenv',
@@ -25,5 +26,7 @@ module.exports = {
   },
   alias: {
     /* ... */
+    '@state': './src/state-module',
+    '@assets': './src/shared-module/assets',
   },
 };
