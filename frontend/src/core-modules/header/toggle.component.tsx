@@ -49,18 +49,18 @@ const SunRay = styled.div<{ ray: string }>`
 
 const Toggle = () => {
   const lightProps = {
-    size: '15px',
+    size: '13px',
     bg: colors.primary['200'],
     inverseBg: colors.neutrals.light,
     rays: [
-      'top: 12px; transform: rotate(0deg);',
-      'top: 17px; right: 18px; transform: rotate(45deg);',
-      'right: 14px; transform: rotate(90deg);',
-      'bottom: 17px; right: 18px; transform: rotate(-45deg);',
-      'bottom: 12px; transform: rotate(0deg);',
-      'bottom: 17px; left: 18px; transform: rotate(45deg);',
-      'left: 14px; transform: rotate(90deg);',
-      'top: 17px; left: 18px; transform: rotate(-45deg);',
+      'top: 15px; transform: rotate(0deg);',
+      'top: 19px; right: 19px; transform: rotate(45deg);',
+      'right: 16px; transform: rotate(90deg);',
+      'bottom: 19px; right: 19px; transform: rotate(-45deg);',
+      'bottom: 15px; transform: rotate(0deg);',
+      'bottom: 19px; left: 19px; transform: rotate(45deg);',
+      'left: 16px; transform: rotate(90deg);',
+      'top: 19px; left: 19px; transform: rotate(-45deg);',
     ],
     crescent: 'top: -13px; right: -13px',
   };
