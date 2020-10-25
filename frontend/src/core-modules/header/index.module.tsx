@@ -1,6 +1,5 @@
 import React from 'react';
 import Logo from './logo.component';
-import Main from './main.styled';
 import Toggle from './toggle.component';
 import styled from '@emotion/styled';
 import { useSelector } from 'react-redux';
@@ -30,9 +29,9 @@ const Header = () => {
   return (
     <Container className="flex items-center" bg={theme.header.bg}>
       <Logo />
-      <Main>
+      <div className="mx-4 flex flex-1 justify-between">
         <p>Main</p>
-      </Main>
+      </div>
       <Toggle />
     </Container>
   );
