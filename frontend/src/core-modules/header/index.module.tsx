@@ -31,7 +31,7 @@ const Header = () => {
     <Container className="flex items-center" bg={theme.header.bg}>
       <Logo />
       <div className="mx-8 flex flex-1 justify-between relative">
-        <p>Main</p>
+        <div />
         <Search />
       </div>
       <Toggle />
