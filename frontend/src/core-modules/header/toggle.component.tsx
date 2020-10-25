@@ -87,13 +87,6 @@ const Toggle = () => {
 
   const toggleTheme = useCallback(() => {
     dispatch(toggle());
-
-    // Change the favicon to reflect theme
-    const favIcon = document.getElementById('favicon');
-
-    if (favIcon) {
-      favIcon.setAttribute('href', 'favicon-dark.ico');
-    }
   }, []);
 
   const currentProps = theme.isLight ? lightProps : darkProps;
