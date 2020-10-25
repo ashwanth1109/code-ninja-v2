@@ -14,6 +14,11 @@ const light = {
       primary: colors.primary['200'],
       secondary: colors.neutrals['100'],
     },
+    search: {
+      bg: colors.neutrals.light,
+      bottomBorder: colors.primary['200'],
+      icon: colors.neutrals['400'],
+    },
   },
 };
 
@@ -28,6 +33,11 @@ const dark = {
     logo: {
       primary: colors.neutrals.light,
       secondary: colors.primary['200'],
+    },
+    search: {
+      bg: colors.neutrals['500'],
+      bottomBorder: colors.primary['100'],
+      icon: colors.neutrals['200'],
     },
   },
 };
@@ -57,6 +67,11 @@ export interface ThemeState {
     logo: {
       primary: string;
       secondary: string;
+    };
+    search: {
+      bg: string;
+      bottomBorder: string;
+      icon: string;
     };
   };
 }

@@ -18,10 +18,14 @@ const CentralSphere = styled.div<{ size: string; bg: string }>`
   height: ${(props) => props.size};
   border-radius: 50%;
   background: ${(props) => props.bg};
-  transition: 0.3s ease-in-out width, 0.3s ease-in-out height,
-    0.3s ease-in-out background-color;
   position: absolute;
   z-index: 1;
+  overflow: hidden;
+`;
+
+const CresentSphereContainer = styled.div`
+  width: 30px;
+  height: 30px;
   overflow: hidden;
 `;
 
@@ -42,8 +46,6 @@ const SunRay = styled.div<{ ray: string }>`
   border-radius: 2px;
   background: ${colors.primary['200']};
   position: absolute;
-  transition: 0.3s ease-in-out left, 0.3s ease-in-out right,
-    0.3s ease-in-out top, 0.3s ease-in-out bottom;
   z-index: -1;
 `;
 
@@ -62,7 +64,7 @@ const Toggle = () => {
       'left: 16px; transform: rotate(90deg);',
       'top: 19px; left: 19px; transform: rotate(-45deg);',
     ],
-    crescent: 'top: -13px; right: -13px',
+    crescent: 'top: -13px; right: -26px',
   };
 
   const darkProps = {
@@ -79,7 +81,7 @@ const Toggle = () => {
       'left: 26px; transform: rotate(90deg);',
       'top: 20px; left: 26px; transform: rotate(-45deg);',
     ],
-    crescent: 'top: 13px; right: 13px',
+    crescent: 'top: -4px; right: -4px',
   };
 
   const theme = useSelector(themeSelector);
@@ -94,10 +96,12 @@ const Toggle = () => {
   return (
     <Container onClick={toggleTheme}>
       <CentralSphere size={currentProps.size} bg={currentProps.bg} />
-      <CresentSphere
-        crescent={currentProps.crescent}
-        inverseBg={currentProps.inverseBg}
-      />
+      <CresentSphereContainer className="relative">
+        <CresentSphere
+          crescent={currentProps.crescent}
+          inverseBg={currentProps.inverseBg}
+        />
+      </CresentSphereContainer>
       {currentProps.rays.map((ray) => (
         <SunRay ray={ray} />
       ))}

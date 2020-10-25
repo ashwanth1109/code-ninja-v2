@@ -4,6 +4,7 @@ import Toggle from './toggle.component';
 import styled from '@emotion/styled';
 import { useSelector } from 'react-redux';
 import { themeSelector } from '@state/theme.state';
+import Search from './search.component';
 
 interface ContainerProps {
   bg: string;
@@ -29,8 +30,9 @@ const Header = () => {
   return (
     <Container className="flex items-center" bg={theme.header.bg}>
       <Logo />
-      <div className="mx-4 flex flex-1 justify-between">
+      <div className="mx-8 flex flex-1 justify-between relative">
         <p>Main</p>
+        <Search />
       </div>
       <Toggle />
     </Container>
