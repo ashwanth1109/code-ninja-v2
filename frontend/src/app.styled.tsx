@@ -17,7 +17,7 @@ const StyledApp: FunctionComponent = ({ children }: PropsWithChildren<{}>) => {
   const theme = useSelector(themeSelector);
 
   return (
-    <Container bg={theme.body.bg} className="w-screen h-screen">
+    <Container bg={theme.body.bg} className="flex flex-col w-screen h-screen">
       {children}
     </Container>
   );

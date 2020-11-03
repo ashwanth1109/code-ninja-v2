@@ -20,7 +20,6 @@ const Container = styled.div<ContainerProps>`
   padding: 0 24px;
   position: fixed;
   top: 0;
-  width: 100vw;
   z-index: 200;
 `;
 
@@ -28,14 +27,18 @@ const Header = () => {
   const theme = useSelector(themeSelector);
 
   return (
-    <Container className="flex items-center" bg={theme.header.bg}>
-      <Logo />
-      <div className="mx-8 flex flex-1 justify-between relative">
-        <div />
-        <Search />
-      </div>
-      <Toggle />
-    </Container>
+    <>
+      <Container className="flex items-center w-full" bg={theme.header.bg}>
+        <Logo />
+        <div className="mx-8 flex flex-1 justify-between relative">
+          <div />
+          <Search />
+        </div>
+        <Toggle />
+      </Container>
+      {/*Placeholder div that occupies the DOM space below the header*/}
+      <div className="w-full" style={{ height: '64px' }} />
+    </>
   );
 };
 
