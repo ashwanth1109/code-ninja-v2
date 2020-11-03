@@ -30,15 +30,18 @@ const Intro = () => {
       >
         <h1 className="text-3xl">Hi, I'm Ashwanth</h1>
         <p>
-          I'm a fullstack typescript developer building serverless applications
-          in Angular or React.
+          I'm a fullstack typescript developer. I write serverless applications
+          (using AWS) in Angular or React.
         </p>
         <p>
-          I enjoy working on deploy pipelines with AWS CloudFormation and
+          I enjoy writing infrastructure as code with CloudFormation and
           building automation tools or scripts to optimize my workflow and
           improve peer developer experience.
         </p>
-        <p>I blog about my experiences (or) brag about my code here.</p>
+        <p>
+          I blog about my experiences (or) brag about my code here. Mostly, the
+          latter.
+        </p>
       </Paper>
     </Container>
   );
