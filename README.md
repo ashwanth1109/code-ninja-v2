@@ -1,6 +1,6 @@
 # Code Ninja V2
 
-## Technical Architecture Design Decision
+## Technical / Architectural Design Decision
 
 ### TADD 001: Commit message markers & their meanings
 
