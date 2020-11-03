@@ -32,4 +32,5 @@ general
 - enhancement
 - docs
 - tadd
+- content
 ```
