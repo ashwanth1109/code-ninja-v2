@@ -70,7 +70,7 @@ const Toggle = () => {
   const darkProps = {
     size: '24px',
     bg: colors.neutrals.light,
-    inverseBg: colors.neutrals.dark,
+    inverseBg: colors.neutrals['500'],
     rays: [
       'top: 20px; transform: rotate(0deg);',
       'top: 21px; right: 27px; transform: rotate(45deg);',

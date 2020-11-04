@@ -29,21 +29,21 @@ const light = {
 const dark = {
   isLight: false,
   body: {
-    bg: colors.neutrals['500'],
+    bg: colors.neutrals.dark,
   },
   elevated: {
     bg: colors.neutrals.dark,
     text: colors.neutrals.light,
   },
   header: {
-    bg: colors.neutrals.dark,
+    bg: colors.neutrals['500'],
     text: colors.neutrals.light,
     logo: {
       primary: colors.neutrals.light,
       secondary: colors.primary['200'],
     },
     search: {
-      bg: colors.neutrals['500'],
+      bg: colors.neutrals.dark,
       bottomBorder: colors.primary['100'],
       icon: colors.neutrals['200'],
     },
