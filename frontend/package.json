@@ -4,7 +4,9 @@
     "build": "snowpack build",
     "test": "web-test-runner \"src/**/*.test.tsx\"",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\""
+    "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\"",
+    "precompile": "deno run -A --unstable https://deno-scripts.s3.amazonaws.com/mdx-parser.ts ..\\content\\",
+    "local-precompile": "deno run -A --unstable ..\\..\\deno-scripts\\scripts\\mdx-parser\\index.ts ..\\content\\"
   },
   "dependencies": {
     "@emotion/core": "10.0.35",

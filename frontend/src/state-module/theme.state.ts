@@ -6,6 +6,7 @@ const light = {
   isLight: true,
   body: {
     bg: colors.neutrals.light,
+    text: colors.neutrals.dark,
   },
   elevated: {
     bg: colors.neutrals['100'],
@@ -30,6 +31,7 @@ const dark = {
   isLight: false,
   body: {
     bg: colors.neutrals.dark,
+    text: colors.neutrals.light,
   },
   elevated: {
     bg: colors.neutrals.dark,
@@ -68,6 +70,7 @@ export interface ThemeState {
   isLight: boolean;
   body: {
     bg: string;
+    text: string;
   };
   elevated: {
     bg: string;

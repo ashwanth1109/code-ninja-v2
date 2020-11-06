@@ -102,8 +102,8 @@ const Toggle = () => {
           inverseBg={currentProps.inverseBg}
         />
       </CresentSphereContainer>
-      {currentProps.rays.map((ray) => (
-        <SunRay ray={ray} />
+      {currentProps.rays.map((ray, id) => (
+        <SunRay key={id} ray={ray} />
       ))}
     </Container>
   );

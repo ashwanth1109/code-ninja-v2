@@ -68,7 +68,10 @@ const Search = () => {
     >
       <SearchIconContainer className="px-3 flex items-center justify-center">
         <SearchIcon
-          style={{ fill: search.icon, transition: '0.1s ease-in-out fill' }}
+          style={{
+            fill: search.icon,
+            // transition: '0.1s ease-in-out fill'
+          }}
         />
       </SearchIconContainer>
       <Input

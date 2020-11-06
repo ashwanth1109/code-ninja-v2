@@ -7,17 +7,23 @@ import type { FunctionComponent, PropsWithChildren } from 'react';
 
 interface ContainerProps {
   bg: string;
+  text: string;
 }
 
 const Container = styled.div<ContainerProps>`
   background-color: ${(props: ContainerProps) => props.bg};
+  color: ${(props: ContainerProps) => props.text};
 `;
 
 const StyledApp: FunctionComponent = ({ children }: PropsWithChildren<{}>) => {
   const theme = useSelector(themeSelector);
 
   return (
-    <Container bg={theme.body.bg} className="flex flex-col w-screen h-screen">
+    <Container
+      bg={theme.body.bg}
+      text={theme.elevated.text}
+      className="flex flex-col w-screen h-screen"
+    >
       {children}
     </Container>
   );
