@@ -1,5 +1,10 @@
 # Demystifying JavaScript Closures
 
+```mdx
+Date: 7th November, 2020
+Description: Test Description
+```
+
 For a long time, I've perceived closures as this arcane topic that had a tendency to unnerve me. However, it is a powerful feature of JavaScript that lets you do some neat stuff. In this article, I will cover its basics, and we will look at one practical usage, and hopefully you will find it intelligible as well (if you don't already).
 
 ## The core of JavaScript
