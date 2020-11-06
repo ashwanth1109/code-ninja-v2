@@ -25,7 +25,6 @@ const App = () => {
   return (
     <Provider store={store}>
       <StyledApp>
-        <Header />
         <Main />
       </StyledApp>
     </Provider>
