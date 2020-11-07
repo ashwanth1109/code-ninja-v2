@@ -19,7 +19,7 @@ The **thread of execution** basically refers to JavaScript's thread, going line 
 
 ![Thread of execution](https://dev-to-uploads.s3.amazonaws.com/i/kzbawqhavtrcrf4vmhvf.png)
 
-Before your code starts to run, a global execution context is created with a memory heap. _An execution context is the environment in which your thread of execution runs._
+Before your code starts to run, a global execution context is created with a memory heap. An execution context is the environment in which your thread of execution runs.
 
 Every time your thread of execution enters an execution context, this context is pushed onto your call stack. Therefore, when your code starts to run initially, global context is pushed onto the call stack, and the JavaScript compiler encounters LINE 1.
 
@@ -132,4 +132,4 @@ while (!result.done) {
 
 We had to use a closure in this case because we needed to store (in memory) and track the currentIndex across the `next()` function calls as we consume our iterator.
 
-Some other places where closures are used are in the implementation of generators, promises etc. It can also be used in functions that perform large computations to store previous computations in order to not repeat it if the same arguments are passed in (memoization). Closures provide you a powerful toolkit to writing modular optimized code.
+Some other places where closures are used are in the implementation of generators, promises etc. It can also be used in functions that perform large computations to store previous computations in order to not repeat it if the same arguments are passed in (memoization). Closures provide you a powerful toolkit to writing modular optimized code. I hope that with this information you are able to leverage the power of closures to write better code.
