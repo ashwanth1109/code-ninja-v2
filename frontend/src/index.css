@@ -21,10 +21,11 @@ TODO: Fix transitions if it improves UX
   padding: 0;
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
-  /*transition: 0.3s ease-in-out left, 0.3s ease-in-out right,*/
-  /*  0.3s ease-in-out top, 0.3s ease-in-out bottom,*/
-  /*  0.3s ease-in-out background-color, 0.3s ease-in-out color,*/
-  /*  0.3s ease-in-out fill, 0.3s ease-in-out width, 0.3s ease-in-out height;*/
+  transition: 0.3s ease-in-out left, 0.3s ease-in-out right,
+    0.3s ease-in-out top, 0.3s ease-in-out bottom,
+    /*0.3s ease-in-out background-color, 0.3s ease-in-out color,*/
+      /*0.3s ease-in-out fill, */ 0.3s ease-in-out width,
+    0.3s ease-in-out height;
 }
 
 .standard-transition {
@@ -38,3 +39,41 @@ TODO: Fix transitions if it improves UX
 /*input::-ms-input-placeholder {*/
 /*  transition: 0.3s ease-in-out color;*/
 /*}*/
+
+h1 {
+  font-size: 3rem;
+  margin-top: 128px;
+}
+
+h2 {
+  font-size: 2.4rem;
+  margin-top: 64px;
+}
+
+p {
+  margin-top: 32px;
+}
+
+ul {
+  margin-top: 16px;
+}
+
+li {
+  list-style-type: circle;
+  margin-left: 32px;
+  margin-top: 8px;
+  font-size: 20px;
+}
+
+pre {
+  padding: 32px;
+  background: #282c34;
+  color: white;
+  font-size: 1.4rem;
+  margin-top: 16px;
+  border-radius: 8px;
+}
+
+img {
+  margin-top: 32px;
+}

@@ -7,37 +7,27 @@ import { themeSelector } from '@state/theme.state';
 
 const HomePageView = () => {
   const theme = useSelector(themeSelector);
-
+  
   return (
     <div>
-      <Link to="/articles/demystifying-javascript-closures">
-        <Paper
-          className="p-4 mt-8 cursor-pointer"
-          style={{ backgroundColor: theme.header.bg, color: theme.header.text }}
-        >
-          <div className="flex row justify-between items-center">
-            <h2 className="text-2xl font-semibold">
-              Demystifying JavaScript Closures
-            </h2>
-            <p className="text-lg my-0">7th November, 2020</p>
+        <Link to="/articles/demystifying-javascript-closures"><Paper elevation={0} className="p-4 mt-8 cursor-pointer" style={{ backgroundColor: theme.elevated.bg, color: theme.elevated.text }}>
+        <div className="flex row justify-between items-center">
+        
+        <h2 className="text-2xl font-semibold mt-0">Demystifying JavaScript Closures</h2>
+          <p className="text-lg my-0">7th November, 2020</p>
           </div>
           <p>Test Description</p>
-        </Paper>
-      </Link>
-
-      <Link to="/articles/intro-to-rxjs">
-        <Paper
-          className="p-4 mt-8 cursor-pointer"
-          style={{ backgroundColor: theme.header.bg, color: theme.header.text }}
-        >
-          <div className="flex row justify-between items-center">
-            <h2 className="text-2xl font-semibold">Introduction to RxJS</h2>
-            <p className="text-lg my-0">7th November, 2020</p>
+        </Paper></Link>
+        
+        <Link to="/articles/intro-to-rxjs"><Paper elevation={0} className="p-4 mt-8 cursor-pointer" style={{ backgroundColor: theme.elevated.bg, color: theme.elevated.text }}>
+        <div className="flex row justify-between items-center">
+        
+        <h2 className="text-2xl font-semibold mt-0">Introduction to RxJS</h2>
+          <p className="text-lg my-0">7th November, 2020</p>
           </div>
           <p>Test Description</p>
-        </Paper>
-      </Link>
-    </div>
+        </Paper></Link>
+            </div>
   );
 };
 

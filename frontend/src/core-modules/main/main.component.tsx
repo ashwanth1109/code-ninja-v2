@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 import { themeSelector } from '@state/theme.state';
 import Article from '../article/article.component';
 import Header from '../header/index.module';
-import StyledApp from '../../app.styled';
 
 interface ContainerProps {
   text: string;
@@ -32,19 +31,21 @@ const Main = () => {
   return (
     <Router>
       <Header />
-      <Container
-        text={theme.elevated.text}
-        className="flex-1 max-w-screen-lg w-full mx-auto"
-      >
-        <Switch>
-          <Route path="/articles/:slug">
-            <Article />
-          </Route>
-          <Route path="/">
-            <HomePageRoute />
-          </Route>
-        </Switch>
-      </Container>
+      <div className="flex-1 overflow-y-auto">
+        <Container
+          text={theme.elevated.text}
+          className="max-w-screen-lg w-full mx-auto"
+        >
+          <Switch>
+            <Route path="/articles/:slug">
+              <Article />
+            </Route>
+            <Route path="/">
+              <HomePageRoute />
+            </Route>
+          </Switch>
+        </Container>
+      </div>
     </Router>
   );
 };

@@ -14,6 +14,7 @@ interface SiteTitleProps {
 }
 
 const SiteTitle = styled.h1<SiteTitleProps>`
+  margin-top: 0;
   font-weight: 500;
   margin-left: 8px;
   font-size: 1.2rem;

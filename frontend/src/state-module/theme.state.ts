@@ -5,22 +5,22 @@ import { colors } from '@assets/design.system';
 const light = {
   isLight: true,
   body: {
-    bg: colors.neutrals.light,
+    bg: colors.neutrals['100'],
     text: colors.neutrals.dark,
   },
   elevated: {
-    bg: colors.neutrals['100'],
+    bg: colors.neutrals['300'],
     text: colors.neutrals.dark,
   },
   header: {
-    bg: colors.neutrals['100'],
+    bg: colors.neutrals['300'],
     text: colors.neutrals.dark,
     logo: {
       primary: colors.primary['200'],
       secondary: colors.neutrals['100'],
     },
     search: {
-      bg: colors.neutrals.light,
+      bg: colors.neutrals['100'],
       bottomBorder: colors.primary['200'],
       icon: colors.neutrals['400'],
     },
@@ -34,7 +34,7 @@ const dark = {
     text: colors.neutrals.light,
   },
   elevated: {
-    bg: colors.neutrals.dark,
+    bg: colors.neutrals['500'],
     text: colors.neutrals.light,
   },
   header: {
