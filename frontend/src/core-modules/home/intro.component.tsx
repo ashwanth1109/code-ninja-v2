@@ -29,10 +29,8 @@ const Intro = () => {
       <h1 className="text-3xl">Hi, I'm Ashwanth</h1>
       <p>
         I'm a fullstack TypeScript developer. I write serverless applications
-        (using AWS) in Angular or React.
-      </p>
-      <p>
-        I enjoy writing infrastructure as code with CloudFormation and building
+        (using AWS) in Angular (at work) or React (for hobby projects). I enjoy
+        writing infrastructure as code with CloudFormation and building
         automation tools to optimize my workflow.
       </p>
       <p>
