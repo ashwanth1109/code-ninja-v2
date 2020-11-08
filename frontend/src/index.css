@@ -70,7 +70,7 @@ li {
 }
 
 pre {
-  padding: 32px;
+  padding: 32px !important;
   background: #282c34;
   color: white;
   font-size: 1.4rem;
