@@ -28,9 +28,8 @@ const cloudfront = new CloudFront();
          * TODO: Identify / experiment to understand if we need to invalidate everything to reflect changes
          * Also explore bucket versioned objects to see how cache invalidation plays out
          * Is only 'index.html' sufficient to invalidate everything necessary
-         * check the next time this is run
          */
-        Items: ["index.html"],
+        Items: ["/"],
       },
     },
   };
