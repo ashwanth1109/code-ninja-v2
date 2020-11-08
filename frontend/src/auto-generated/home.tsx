@@ -7,29 +7,58 @@ import { themeSelector } from '@state/theme.state';
 
 const HomePageView = () => {
   const theme = useSelector(themeSelector);
-  
+
   return (
     <div>
-        <Paper elevation={0} className="mt-8" style={{ backgroundColor: theme.body.bg, color: theme.body.text }}>
+      <Paper
+        elevation={0}
+        className="mt-8"
+        style={{ backgroundColor: theme.body.bg, color: theme.body.text }}
+      >
         <div className="flex row justify-between items-center mb-2">
-        
-        <Link to="/articles/001.demystifying-javascript-closures">
-        <h3 className="mt-0 hover:underline">Demystifying JavaScript Closures</h3></Link>
+          <Link to="/articles/001.demystifying-javascript-closures">
+            <h3 className="mt-0 hover:underline">
+              Demystifying JavaScript Closures
+            </h3>
+          </Link>
           <p className="text-lg my-0">10 mins</p>
-          </div><div className="flex row items-center">
-          <span className="date-tag">31st Nov, 2020</span><span className="article-tags" style={{backgroundColor: theme.tag}}>JavaScript</span><span className="article-tags" style={{backgroundColor: theme.tag}}>Theory</span></div>
-        </Paper>
-        
-        <Paper elevation={0} className="mt-8" style={{ backgroundColor: theme.body.bg, color: theme.body.text }}>
+        </div>
+        <div className="flex row items-center">
+          <span className="date-tag">31st Oct, 2020</span>
+          <span className="article-tags" style={{ backgroundColor: theme.tag }}>
+            JavaScript
+          </span>
+          <span className="article-tags" style={{ backgroundColor: theme.tag }}>
+            Theory
+          </span>
+        </div>
+      </Paper>
+
+      <Paper
+        elevation={0}
+        className="mt-8"
+        style={{ backgroundColor: theme.body.bg, color: theme.body.text }}
+      >
         <div className="flex row justify-between items-center mb-2">
-        
-        <Link to="/articles/002.intro-to-rxjs">
-        <h3 className="mt-0 hover:underline">Introduction to RxJS</h3></Link>
+          <Link to="/articles/002.intro-to-rxjs">
+            <h3 className="mt-0 hover:underline">Introduction to RxJS</h3>
+          </Link>
           <p className="text-lg my-0">7 mins</p>
-          </div><div className="flex row items-center">
-          <span className="date-tag">7th Nov, 2020</span><span className="article-tags" style={{backgroundColor: theme.tag}}>Angular</span><span className="article-tags" style={{backgroundColor: theme.tag}}>RxJS</span><span className="article-tags" style={{backgroundColor: theme.tag}}>Theory</span></div>
-        </Paper>
-            </div>
+        </div>
+        <div className="flex row items-center">
+          <span className="date-tag">7th Nov, 2020</span>
+          <span className="article-tags" style={{ backgroundColor: theme.tag }}>
+            Angular
+          </span>
+          <span className="article-tags" style={{ backgroundColor: theme.tag }}>
+            RxJS
+          </span>
+          <span className="article-tags" style={{ backgroundColor: theme.tag }}>
+            Theory
+          </span>
+        </div>
+      </Paper>
+    </div>
   );
 };
 
