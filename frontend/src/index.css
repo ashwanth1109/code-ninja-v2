@@ -41,13 +41,17 @@ TODO: Fix transitions if it improves UX
 /*}*/
 
 h1 {
-  font-size: 3rem;
+  font-size: 2.4rem;
   margin-top: 128px;
 }
 
 h2 {
-  font-size: 2.4rem;
+  font-size: 2rem;
   margin-top: 64px;
+}
+
+h3 {
+  font-size: 1.6rem;
 }
 
 p {
@@ -76,4 +80,17 @@ pre {
 
 img {
   margin-top: 32px;
+}
+
+.date-tag {
+  font-size: 1.2rem;
+}
+
+.article-tags {
+  font-size: 1rem;
+  padding: 4px 8px;
+  color: white;
+  margin-left: 16px;
+  border-radius: 4px;
+  text-transform: uppercase;
 }

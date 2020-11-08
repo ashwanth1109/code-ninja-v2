@@ -2,6 +2,7 @@ module.exports = {
   mount: {
     public: '/',
     src: '/_dist_',
+    assets: '/assets',
   },
   scripts: { 'build:css': 'postcss' },
   plugins: [

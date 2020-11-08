@@ -25,6 +25,7 @@ const light = {
       icon: colors.neutrals['400'],
     },
   },
+  tag: colors.primary['200'],
 };
 
 const dark = {
@@ -50,6 +51,7 @@ const dark = {
       icon: colors.neutrals['200'],
     },
   },
+  tag: colors.primary['100'],
 };
 
 const themes = { light, dark };
@@ -89,6 +91,7 @@ export interface ThemeState {
       icon: string;
     };
   };
+  tag: string;
 }
 
 export const themeSelector = (state: RootState) => state.theme;

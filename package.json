@@ -1,0 +1,22 @@
+{
+  "name": "code-ninja-v2",
+  "version": "1.0.0",
+  "description": "## Technical / Architectural Design Decision",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd frontend && npm run build",
+    "predeploy": "npm run build",
+    "deploy": "cd deploy && npm run deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashwanth1109/code-ninja-v2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashwanth1109/code-ninja-v2/issues"
+  },
+  "homepage": "https://github.com/ashwanth1109/code-ninja-v2#readme"
+}
