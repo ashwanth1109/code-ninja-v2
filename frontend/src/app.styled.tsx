@@ -1,9 +1,14 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import styled from '@emotion/styled';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { themeSelector } from '@state/theme.state';
 import type { FunctionComponent, PropsWithChildren } from 'react';
+
+// TODO: add types to package
+// @ts-ignore
+import useClientDimensions from 'react-client-dimensions';
+import { update } from '@state/client.state';
 
 interface ContainerProps {
   bg: string;
@@ -17,6 +22,10 @@ const Container = styled.div<ContainerProps>`
 
 const StyledApp: FunctionComponent = ({ children }: PropsWithChildren<{}>) => {
   const theme = useSelector(themeSelector);
+  const { vw, vh } = useClientDimensions();
+  const dispatch = useDispatch();
+
+  dispatch(update({ w: vw, h: vh }));
 
   return (
     <Container

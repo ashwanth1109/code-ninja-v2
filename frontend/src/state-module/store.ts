@@ -28,6 +28,7 @@ const createStore = (initialState?: RootState): EnhancedStore => {
     throttle(() => {
       saveState({
         theme: store.getState().theme,
+        client: store.getState().client,
       });
     }),
   );

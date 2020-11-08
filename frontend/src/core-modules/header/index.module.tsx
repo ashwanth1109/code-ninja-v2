@@ -5,6 +5,9 @@ import styled from '@emotion/styled';
 import { useSelector } from 'react-redux';
 import { themeSelector } from '@state/theme.state';
 import Search from './search.component';
+import { clientSelector, DEVICE } from '@state/client.state';
+import SearchMobile from './search-mobile.component';
+import useSearch from './use-search.hook';
 
 interface ContainerProps {
   bg: string;
@@ -25,6 +28,26 @@ const Container = styled.div<ContainerProps>`
 
 const Header = () => {
   const theme = useSelector(themeSelector);
+  const client = useSelector(clientSelector);
+  const searchProps = useSearch();
+
+  if (client.device === DEVICE.MOBILE) {
+    return (
+      <>
+        <Container
+          className="flex items-center w-full relative"
+          bg={theme.header.bg}
+        >
+          <Logo />
+          <div className="flex flex-1" />
+          <SearchMobile {...searchProps} />
+          <Toggle />
+        </Container>
+        {/*Placeholder div that occupies the DOM space below the header*/}
+        <div className="w-full" style={{ height: '64px' }} />
+      </>
+    );
+  }
 
   return (
     <>
@@ -32,7 +55,7 @@ const Header = () => {
         <Logo />
         <div className="mx-8 flex flex-1 justify-between relative">
           <div />
-          <Search />
+          <Search {...searchProps} />
         </div>
         <Toggle />
       </Container>

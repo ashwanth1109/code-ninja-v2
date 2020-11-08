@@ -24,6 +24,7 @@ const light = {
       bottomBorder: colors.primary['200'],
       icon: colors.neutrals['400'],
       itemBg: colors.neutrals['200'],
+      mobile: colors.primary['200'],
     },
   },
   tag: colors.primary['200'],
@@ -51,6 +52,7 @@ const dark = {
       bottomBorder: colors.primary['100'],
       icon: colors.neutrals['200'],
       itemBg: colors.neutrals['400'],
+      mobile: colors.neutrals.light,
     },
   },
   tag: colors.primary['100'],
@@ -92,6 +94,7 @@ export interface ThemeState {
       bottomBorder: string;
       icon: string;
       itemBg: string; // onHover
+      mobile: string;
     };
   };
   tag: string;
