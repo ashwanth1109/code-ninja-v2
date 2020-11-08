@@ -7,7 +7,8 @@
     "build": "cd frontend && npm run precompile && npm run build",
     "predeploy": "npm run build",
     "deploy": "cd deploy && npm run deploy",
-    "cache-invalidation": "cd deploy && npm run cache-invalidation"
+    "cache-invalidation": "cd deploy && npm run cache-invalidation",
+    "reload": "deno cache https://deno-scripts.s3.amazonaws.com/mdx-parser.js --reload"
   },
   "repository": {
     "type": "git",

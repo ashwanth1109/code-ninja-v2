@@ -40,7 +40,7 @@ export { update };
 export interface ClientState {
   w: number;
   h: number;
-  device: DEVICE;
+  device?: DEVICE;
 }
 
 export const clientSelector = (state: RootState) => state.client;
