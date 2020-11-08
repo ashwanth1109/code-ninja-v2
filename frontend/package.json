@@ -10,7 +10,7 @@
     "precompile": "npm-run-all precompile:*",
     "precompile:parser": "deno run -A --unstable https://deno-scripts.s3.amazonaws.com/mdx-parser.js ..\\content\\",
     "precompile:format": "prettier --write ./src/auto-generated",
-    "local-precompile": "deno run -A --unstable ..\\..\\deno-scripts\\scripts\\mdx-parser\\index.ts ..\\content\\"
+    "local-precompile": "deno run -A --unstable ..\\..\\deno-scripts\\scripts\\mdx-parser\\index.ts ..\\content\\ && npm run precompile:format"
   },
   "dependencies": {
     "@emotion/core": "10.0.35",

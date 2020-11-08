@@ -4,7 +4,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 const articles: { [fileName: string]: FunctionComponent } = {
-  '001.demystifying-javascript-closures': () => (
+  'demystifying-javascript-closures': () => (
     <div className="mb-32">
       <h1>Demystifying JavaScript Closures</h1>
       <div>
@@ -278,7 +278,7 @@ while (!result.done) {
     </div>
   ),
 
-  '002.intro-to-rxjs': () => (
+  'intro-to-rxjs': () => (
     <div className="mb-32">
       <h1>Introduction to RxJS</h1>
       <div>

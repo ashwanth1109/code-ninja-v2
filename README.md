@@ -8,6 +8,8 @@
 - Run `npm run deploy` => this will build & publish built content to s3 bucket for deployment
 - Run `npm run cache-invalidation` => this will create a cache invalidation for cloudfront distribution **(needs to be tested if this runs correctly. Will check it the next time I need to invalidate cache)**
 
+Note: To run build using local mdx-parser script, use `npm run local-precompile` inside `frontend` directory
+
 ## Technical / Architectural Design Decision
 
 ### TADD 001: Commit message markers & their meanings

@@ -16,7 +16,7 @@ const HomePageView = () => {
         style={{ backgroundColor: theme.body.bg, color: theme.body.text }}
       >
         <div className="flex row justify-between items-center mb-2">
-          <Link to="/articles/001.demystifying-javascript-closures">
+          <Link to="/articles/demystifying-javascript-closures">
             <h3 className="mt-0 hover:underline">
               Demystifying JavaScript Closures
             </h3>
@@ -40,7 +40,7 @@ const HomePageView = () => {
         style={{ backgroundColor: theme.body.bg, color: theme.body.text }}
       >
         <div className="flex row justify-between items-center mb-2">
-          <Link to="/articles/002.intro-to-rxjs">
+          <Link to="/articles/intro-to-rxjs">
             <h3 className="mt-0 hover:underline">Introduction to RxJS</h3>
           </Link>
           <p className="text-lg my-0">7 mins</p>
