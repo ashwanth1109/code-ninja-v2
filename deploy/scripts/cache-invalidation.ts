@@ -29,7 +29,7 @@ const cloudfront = new CloudFront();
          * Also explore bucket versioned objects to see how cache invalidation plays out
          * Is only 'index.html' sufficient to invalidate everything necessary
          */
-        Items: ["/"],
+        Items: ["/*"],
       },
     },
   };
