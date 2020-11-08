@@ -28,6 +28,10 @@ const light = {
     },
   },
   tag: colors.primary['200'],
+  scroll: {
+    thumb: colors.neutrals.dark,
+    track: colors.neutrals.light,
+  },
 };
 
 const dark = {
@@ -56,6 +60,10 @@ const dark = {
     },
   },
   tag: colors.primary['100'],
+  scroll: {
+    thumb: colors.neutrals.light,
+    track: colors.neutrals.dark,
+  },
 };
 
 const themes = { light, dark };
@@ -98,6 +106,10 @@ export interface ThemeState {
     };
   };
   tag: string;
+  scroll: {
+    thumb: string;
+    track: string;
+  };
 }
 
 export const themeSelector = (state: RootState) => state.theme;

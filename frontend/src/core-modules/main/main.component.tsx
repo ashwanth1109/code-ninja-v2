@@ -24,6 +24,26 @@ const HomePageContainer = styled.div`
   margin-bottom: 64px;
 `;
 
+interface MainPageContainerProps {
+  track: string;
+  thumb: string;
+}
+
+const MainPageContainer = styled.div<MainPageContainerProps>`
+  ::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: ${(props) => props.track};
+    box-shadow: inset 0 0 5px grey;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${(props) => props.thumb};
+  }
+`;
+
 const HomePageRoute = () => (
   <HomePageContainer>
     <Intro />
@@ -39,7 +59,11 @@ const Main = () => {
   return (
     <Router>
       <Header />
-      <div className="flex-1 overflow-y-auto">
+      <MainPageContainer
+        thumb={theme.scroll?.thumb}
+        track={theme.scroll?.track}
+        className="flex-1 overflow-y-auto"
+      >
         <Container
           text={theme.elevated.text}
           className="max-w-screen-lg w-full mx-auto"
@@ -53,7 +77,7 @@ const Main = () => {
             </Route>
           </Switch>
         </Container>
-      </div>
+      </MainPageContainer>
     </Router>
   );
 };
