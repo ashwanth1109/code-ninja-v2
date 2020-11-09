@@ -4,9 +4,13 @@ import { Paper } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { themeSelector } from '@state/theme.state';
+import { clientSelector, DEVICE } from '@state/client.state';
 
 const HomePageView = () => {
   const theme = useSelector(themeSelector);
+  const client = useSelector(clientSelector);
+
+  const isMobile = client.device === DEVICE.MOBILE;
 
   return (
     <div>
@@ -15,22 +19,28 @@ const HomePageView = () => {
         className="mt-8"
         style={{ backgroundColor: theme.body.bg, color: theme.body.text }}
       >
-        <div className="flex row justify-between items-center mb-2">
+        <div
+          className={`flex ${
+            isMobile ? 'flex-col' : 'flex-row justify-between items-center'
+          } mb-2`}
+        >
           <Link to="/articles/demystifying-javascript-closures">
-            <h3 className="mt-0 hover:underline">
+            <h3
+              className={`mt-0 hover:underline ${isMobile ? 'text-2xl' : ''}`}
+            >
               Demystifying JavaScript Closures
             </h3>
           </Link>
-          <p className="text-lg my-0">10 mins</p>
+          {!isMobile && <p className="text-lg my-0">10 mins</p>}
         </div>
-        <div className="flex row items-center">
-          <span className="date-tag">7th Nov, 2020</span>
-          <span className="article-tags" style={{ backgroundColor: theme.tag }}>
+        <div className="flex row items-center flex-wrap w-full">
+          <div className="date-tag">7th Nov, 2020</div>
+          <div className="article-tags" style={{ backgroundColor: theme.tag }}>
             JavaScript
-          </span>
-          <span className="article-tags" style={{ backgroundColor: theme.tag }}>
+          </div>
+          <div className="article-tags" style={{ backgroundColor: theme.tag }}>
             Theory
-          </span>
+          </div>
         </div>
       </Paper>
 
@@ -39,22 +49,28 @@ const HomePageView = () => {
         className="mt-8"
         style={{ backgroundColor: theme.body.bg, color: theme.body.text }}
       >
-        <div className="flex row justify-between items-center mb-2">
+        <div
+          className={`flex ${
+            isMobile ? 'flex-col' : 'flex-row justify-between items-center'
+          } mb-2`}
+        >
           <Link to="/articles/devlauncher-hackathon-experience">
-            <h3 className="mt-0 hover:underline">
+            <h3
+              className={`mt-0 hover:underline ${isMobile ? 'text-2xl' : ''}`}
+            >
               5 Takeaways From My First Hackathon Experience
             </h3>
           </Link>
-          <p className="text-lg my-0">7 mins</p>
+          {!isMobile && <p className="text-lg my-0">10 mins</p>}
         </div>
-        <div className="flex row items-center">
-          <span className="date-tag">9th Nov, 2020</span>
-          <span className="article-tags" style={{ backgroundColor: theme.tag }}>
+        <div className="flex row items-center flex-wrap w-full">
+          <div className="date-tag">9th Nov, 2020</div>
+          <div className="article-tags" style={{ backgroundColor: theme.tag }}>
             Hackathon
-          </span>
-          <span className="article-tags" style={{ backgroundColor: theme.tag }}>
+          </div>
+          <div className="article-tags" style={{ backgroundColor: theme.tag }}>
             Takeaways
-          </span>
+          </div>
         </div>
       </Paper>
     </div>

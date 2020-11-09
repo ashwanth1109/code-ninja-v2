@@ -84,13 +84,16 @@ img {
 
 .date-tag {
   font-size: 1.2rem;
+  margin-right: 16px;
+  margin-bottom: 4px;
 }
 
 .article-tags {
   font-size: 1rem;
   padding: 4px 8px;
   color: white;
-  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 4px;
   border-radius: 4px;
   text-transform: uppercase;
 }
