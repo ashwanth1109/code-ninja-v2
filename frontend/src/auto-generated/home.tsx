@@ -24,7 +24,7 @@ const HomePageView = () => {
           <p className="text-lg my-0">10 mins</p>
         </div>
         <div className="flex row items-center">
-          <span className="date-tag">31st Oct, 2020</span>
+          <span className="date-tag">7th Nov, 2020</span>
           <span className="article-tags" style={{ backgroundColor: theme.tag }}>
             JavaScript
           </span>
@@ -40,21 +40,20 @@ const HomePageView = () => {
         style={{ backgroundColor: theme.body.bg, color: theme.body.text }}
       >
         <div className="flex row justify-between items-center mb-2">
-          <Link to="/articles/intro-to-rxjs">
-            <h3 className="mt-0 hover:underline">Introduction to RxJS</h3>
+          <Link to="/articles/devlauncher-hackathon-experience">
+            <h3 className="mt-0 hover:underline">
+              5 Takeaways From My First Hackathon Experience
+            </h3>
           </Link>
           <p className="text-lg my-0">7 mins</p>
         </div>
         <div className="flex row items-center">
-          <span className="date-tag">7th Nov, 2020</span>
+          <span className="date-tag">9th Nov, 2020</span>
           <span className="article-tags" style={{ backgroundColor: theme.tag }}>
-            Angular
+            Hackathon
           </span>
           <span className="article-tags" style={{ backgroundColor: theme.tag }}>
-            RxJS
-          </span>
-          <span className="article-tags" style={{ backgroundColor: theme.tag }}>
-            Theory
+            Takeaways
           </span>
         </div>
       </Paper>

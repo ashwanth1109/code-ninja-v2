@@ -22,15 +22,28 @@ const searchLookupArr: SearchMetadata[] = [
     slug: 'demystifying-javascript-closures',
   },
   {
-    title: 'Introduction to RxJS',
-    /**
-     * TODO:
-     * Look for any AWS service that can generate a list of "interesting" keywords based on content
-     * Use this list for refactored strategy from above todo
-     */
-    keywords: ['introduction', 'rxjs', 'angular', 'theory'],
-    slug: 'intro-to-rxjs',
+    title: '5 Takeaways From My First Hackathon Experience',
+    keywords: [
+      '5',
+      'takeaways',
+      'from',
+      'my',
+      'first',
+      'hackathon',
+      'experience',
+    ],
+    slug: 'devlauncher-hackathon-experience',
   },
+  // {
+  //   title: 'Introduction to RxJS',
+  //   /**
+  //    * TODO:
+  //    * Look for any AWS service that can generate a list of "interesting" keywords based on content
+  //    * Use this list for refactored strategy from above todo
+  //    */
+  //   keywords: ['introduction', 'rxjs', 'angular', 'theory'],
+  //   slug: 'intro-to-rxjs',
+  // },
 ];
 
 export interface SearchMetadata {

@@ -3,14 +3,17 @@
 ## Dev Guide
 
 - Update articles in `/content` directory
-- No need to run `npm run build` because deploy will automatically do this step
-- `build` => this will automatically invoke mdx-parser to generate static content from `/content` directory and then build a snowpack distribution (ready to be deployed)
+- Run `npm run build` automatically invoke mdx-parser to generate static content from `/content` directory and then build a snowpack distribution with all your assets (ready to be deployed)
 - Run `npm run deploy` => this will build & publish built content to s3 bucket for deployment
 - Run `npm run cache-invalidation` => this will create a cache invalidation for cloudfront distribution **(needs to be tested if this runs correctly. Will check it the next time I need to invalidate cache)**
 
-- Run `npm run reload` in case you want to reload deno scripts in local cache
+Run these scripts for specific situations:
 
-Note: To run build using local mdx-parser script, use `npm run local-precompile` inside `frontend` directory
+- Run `npm run reload` in case you want to reload deno scripts in local cache
+- Run `npm run postbuild` in case you want to build your assets
+- Run `npm run build-deploy` in case you want to build & deploy sequentially
+- Run build using local mdx-parser script, use `npm run local-precompile` inside `frontend` directory
+  (\*Note: this requires deno-scripts repo cloned in the same directory as code-ninja-v2)
 
 ## Technical / Architectural Design Decision
 

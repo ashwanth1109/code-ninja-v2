@@ -2,8 +2,14 @@
 import React, { FunctionComponent } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import ReactPlayer from 'react-player';
 
-const articles: { [fileName: string]: FunctionComponent } = {
+interface CompProps {
+  videoW?: number;
+  videoH?: number;
+}
+
+const articles: { [fileName: string]: FunctionComponent<CompProps> } = {
   'demystifying-javascript-closures': () => (
     <div className="mb-32">
       <h1>Demystifying JavaScript Closures</h1>
@@ -278,85 +284,199 @@ while (!result.done) {
     </div>
   ),
 
-  'intro-to-rxjs': () => (
+  'devlauncher-hackathon-experience': ({ videoW, videoH }) => (
     <div className="mb-32">
-      <h1>Introduction to RxJS</h1>
+      <h1>5 Takeaways From My First Hackathon Experience</h1>
       <div>
         <p>
-          Since I've started working with Angular, RxJS has been one of those
-          things that's baffled me and amazed me at the same time. At the start
-          you will find that thinking in Reactive and digesting the plethora of
-          concepts that it comes with can be a little challenging. You might be
-          tempted to jump in and start using operators following the docs
-          without fully understanding them. In my experience, this can lead you
-          to a point where you have no clue what's happening in your system. In
-          this article, I will try to break down what RxJS is and to understand
-          basic concepts such as Observables, Observers and Subscriptions.
-        </p>
-        <h2>What is RxJS?</h2>
-        <p>
-          Simply put, it's a programming paradigm. A programming paradigm is
-          basically a way of thinking about code, or a way of writing code. You
-          might have heard about and possibly used some popular programming
-          paradigms such as imperative or procedural programming,
-          object-oriented programming and functional programming. Like function,
-          reactive is a declarative programming paradigm, which is basically a
-          style where programs describe the logic of a particular computation
-          rather than explicitly stating the control flow or sequence of steps
-          that must be performed.
+          Last week, I took part in my first ever Hackathon and I presented a
+          tool called <strong>DevLauncher</strong>, and I'm excited to share
+          that I won the event. I had a couple of takeaways from the experience,
+          and I will share them in this article.
         </p>
         <p>
-          Reactive is primarily concerned with asynchronous data streams called
-          Observables. A reactive application will "REACT" to events. For
-          example, a user clicking a button is an event. Your application can
-          react to this event. Observables are an alternative to promises, and
-          in many ways they can be similar but also very different. I'm not
-          planning on going into detail about the similarities and differences
-          between the two in this article. Perhaps, in another one. In this one,
-          I'm just gonna focus on explaining the core concepts of RxJS.
+          If you would like to see the results of the hackathon, you can check
+          them out{' '}
+          <a
+            className="underline"
+            href="https://start.devspaces.com/devspaces-hackathon/#winners1"
+            target="_blank"
+          >
+            here on this link
+          </a>
+          .
+        </p>
+        <p>You can also see my submission/demo video below:</p>
+        <div className="mt-8">
+          <ReactPlayer
+            url="https://www.youtube.com/watch?v=Sr9YMOj4j48"
+            width={videoW || 1000}
+            height={videoH || 560}
+          />
+        </div>
+        <p>
+          The category of the event was to find ways to improve team
+          productivity by building extensions, or developing a workflow, with a
+          new product called <strong>DevSpaces</strong>. DevSpaces is a tool to
+          launch new environments from Github and start to code within seconds
+          of your first time looking at a repository.
         </p>
         <p>
-          Before working with RxJS, you must get familiar with the following
-          concepts. We will first look at Data Streams and Observables using
-          real world examples. We will also try to understand Observers and
-          Subscriptions in this context and how operators are used to manipulate
-          data streams. We will look at these concepts in the form of Marble
-          Diagrams which are a very popular way of representing and
-          understanding the reactive programming model. In the end, we touch
-          upon the notion of Hot & Cold observables briefly. In subsequent
-          articles, I will go into depth about using the various operators with
-          code examples to be on your way to mastering the topic.
-        </p>
-        <h2>What are Observables / Data Streams?</h2>
-        <p>
-          A data stream in RxJS is called an Observable. A data stream is
-          something that emits events/data over a period of time. You can listen
-          to a stream through a process called subscription, and you can react
-          to a particular event by performing an action. Hence, the term,
-          Reactive Programming.
+          Setting up a new project on your local (even with good README's) can
+          be painful, especially if you're new to that particular technology.
+          Typically, I've seen that new developers tend to take about a week
+          before they can hit the ground running by adding new capability to the
+          application. So, DevSpaces can be an effective{' '}
+          <strong>ease-into-the-codebase solution</strong> for onboarding new
+          developers. It can also be really helpful for code reviewers to check
+          out the context of how the code in the PR works{' '}
+          <strong>without having to switch context</strong> from their current
+          work on their local machines.
         </p>
         <p>
-          Let me try to simplify this explanation by using a real world example.
-          Take for example, a youtube channel. In this case, we have the channel
-          for Google Cloud Platform. Thinking about it from a reactive
-          perspective, a youtube channel is the data stream or the observable.
-          Over time, different videos will be uploaded to the channel, and you
-          can think of each of these uploads as an event. An event of the type
-          "video upload".
+          So, this was a product that the senior leadership was really excited
+          about. A series of Hackathons were announced to promote and integrate
+          the usage of the product into the different teams in the organization.
         </p>
+        <h2>Understand the Hackathon objective</h2>
         <img
-          src="https://s3.amazonaws.com/code-ninja.xyz/assets/intro-to-rxjs/gcp.png"
-          alt="GCP Youtube Channel"
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/devlauncher-hackathon-experience/event-objective.png"
+          alt="Event Objective"
         />
         <p>
-          The important thing to note here is that not everyone gets this
-          notification of the event of a video upload. As a user, you have to
-          subscribe to the channel in order to get notified of these events. So,
-          you and I, are what is called Observers in this paradigm. And as an
-          Observer, you have to subscribe to the Observable (in this case the
-          youtube channel) in order to listen to events. Once you are made aware
-          of a particular event you can react to it. So, for example, you can
-          react by clicking on the video and watching it.
+          While this seems obvious, its something I generally miss if I'm not
+          consciously thinking about this. I skimmed through all the info and
+          videos that the product had, as well as all info about the Hackathon,
+          to better understand the objective. I determined the primary objective
+          of the Hackathon was to get teams to adopt the product and find ways
+          to be more productive with the tool. They were looking for the tool
+          with the most impact. The most impact not just for your team, but a
+          solution thats extensible to other teams as well (even those working
+          in a different tech stack).
+        </p>
+        <p>
+          I realized that every team which uses the product would like to set up
+          their environment (be it CloudFormation or any other kind of
+          environment) because that is the single most important value
+          proposition of the product. When working in a local terminal / IDE, we
+          tend to look at our situation and determine what kind of setup we
+          want. This was not directly feasible with DevSpaces because you could
+          have only one config file (for example, we don't have config.prod.json
+          vs config.dev.json). This was the problem I wanted to solve to enable
+          developers to choose different setups for different situations.
+        </p>
+        <h2>Understand your objectives</h2>
+        <img
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/devlauncher-hackathon-experience/your-objective.png"
+          alt="Your Objective"
+        />
+        <p>
+          This is different from the previous point, because you can have very
+          different objectives from the intention of the event organizers. This
+          being my first hackathon, I didn't really think about winning it. I
+          just wanted to be able to complete an end-to-end tool/solution that
+          fits the theme and submit it. The objective was to participate more
+          than attempt a grandiose high-impact idea that could (perhaps) not be
+          achieved in the given time frame. The other objective, was to come out
+          of the other end with a tool that I would end up using on a day-to-day
+          basis going forward. This would ensure that there is a benefit to my
+          effort even if I don't really win anything.
+        </p>
+        <p>
+          I think having this mindset provided me with the necessary motivation
+          to pull long hours over the weekend since my target was achievable
+          with certainty and had a sure benefit.
+        </p>
+        <h2>Run a feasibility study</h2>
+        <img
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/devlauncher-hackathon-experience/feasibility-study.png"
+          alt="Feasibility Study"
+        />
+        <p>
+          Given the time constraint of a hackathon (~ 3/4 days effectively), you
+          don't have the possibility to explore ideas that don't pan out at the
+          end due to technical limitations. So, its very important to identify
+          the feasibility of ideas as soon as possible. As soon as the
+          brainstorming phase is done, identify what are critical points in your
+          plan that need to be tested for feasibility. Ideally, brainstorm a
+          couple of different ways of solving the same problem you identified.
+        </p>
+        <p>
+          For my problem, I tested the feasibility of developing the solution
+          with an electron desktop app shell or a chrome extension. Both were
+          feasible to develop my solution, but chrome extension felt natural and
+          made more sense. Another critical point of testing was to identify if
+          DevSpaces had any open API that I could communicate with from my
+          application. It did not, which was a huge blocker. I looked into the
+          docs to find that you could pass environment variables as part of the
+          URL. With this I could develop a solution that could solve the core
+          problem I had, but I still had to scrap a few other ideas I had
+          because of the no public API limitation.
+        </p>
+        <p>
+          Having run the feasibility and tweaked my plan a little, I felt that I
+          had enough to actually start the project.
+        </p>
+        <h2>
+          Setup a minimal project with only tooling that adds to individual
+          productivity
+        </h2>
+        <img
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/devlauncher-hackathon-experience/minimal-tooling.png"
+          alt="Minimal Tooling"
+        />
+        <p>
+          Another important consideration is to identify your repo setup. Given
+          that I was working on the project alone, I had to choose tooling
+          taking this into account. For example, I chose to build the extension
+          using React over Angular, because it comes with a simpler setup
+          (especially beneficial for non-production applications). I chose
+          parcel over webpack because I knew parcel was sufficient for my
+          use-case. I only needed babel conversion and static files copy. So, it
+          would be faster to develop with parcel.
+        </p>
+        <p>
+          Although I am a <strong>huge</strong> typescript fan, I decided
+          against writing the application in typescript because maintaining
+          types and interfaces is more overhead with little to no benefit. Given
+          that I was going to work solo on the project in a short time, I always
+          have the context of the entire app and types dont really add that much
+          value. Similarly, I decided not to set up linters or formatters except
+          for prettier and I decided to use Material UI to quickly build
+          components.
+        </p>
+        <h2>Hardcode or hack non-critical features</h2>
+        <img
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/devlauncher-hackathon-experience/hack-non-criticals.png"
+          alt="Hack your non-critical"
+        />
+        <p>
+          Given that your point is to demonstrate the critical features of the
+          application / tooling, it is probably not a good idea to spend time
+          building the necessary but non-critical features. Find ways to hack or
+          hardcode some things as per your situation so that you can focus on
+          the critical stuff.
+        </p>
+        <p>
+          For example, I needed an AWS user with permissions for some features,
+          but instead of building a full-scale auth solution, I just registered
+          a cognito user to my identity pool and used a simple sign-in form.
+          This way the tool is still usable on a day-to-day basis, and you can
+          add on proper auth setup at any time.
+        </p>
+        <p>
+          Another example would be, I hardcoded my environment values for just
+          my environments "ash1" and "ash2", meaning you don't have the ability
+          to add more environments or associate your environments with your
+          cognito user. But this is not critical for your demonstration, because
+          if it works for two, it would work for N number anyway.
+        </p>
+        <h2>That's all, folks!</h2>
+        <p>
+          I learnt a ton participating in the event, the top 5 are what I've
+          listed above. I would love to hear from you if you disagree on any of
+          my points or have any thoughts on how to go about being more efficient
+          in developing solutions for hackathons. Hit me up on LinkedIN. :)
         </p>
       </div>
     </div>
