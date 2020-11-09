@@ -289,7 +289,7 @@ while (!result.done) {
       <h1>5 Takeaways From My First Hackathon Experience</h1>
       <div>
         <p>
-          Last week, I took part in my first ever Hackathon and I presented a
+          Last week, I took part in my first ever Hackathon, and I presented a
           tool called <strong>DevLauncher</strong>, and I'm excited to share
           that I won the event. I had a couple of takeaways from the experience,
           and I will share them in this article.
@@ -351,7 +351,7 @@ while (!result.done) {
           of the Hackathon was to get teams to adopt the product and find ways
           to be more productive with the tool. They were looking for the tool
           with the most impact. The most impact not just for your team, but a
-          solution thats extensible to other teams as well (even those working
+          solution that's extensible to other teams as well (even those working
           in a different tech stack).
         </p>
         <p>
@@ -361,8 +361,8 @@ while (!result.done) {
           proposition of the product. When working in a local terminal / IDE, we
           tend to look at our situation and determine what kind of setup we
           want. This was not directly feasible with DevSpaces because you could
-          have only one config file (for example, we don't have config.prod.json
-          vs config.dev.json). This was the problem I wanted to solve to enable
+          have only one config file (for example, we don't have config1.yml vs
+          config2.yml). This was the problem I wanted to solve to enable
           developers to choose different setups for different situations.
         </p>
         <h2>Understand your objectives</h2>
@@ -375,12 +375,13 @@ while (!result.done) {
           different objectives from the intention of the event organizers. This
           being my first hackathon, I didn't really think about winning it. I
           just wanted to be able to complete an end-to-end tool/solution that
-          fits the theme and submit it. The objective was to participate more
-          than attempt a grandiose high-impact idea that could (perhaps) not be
-          achieved in the given time frame. The other objective, was to come out
-          of the other end with a tool that I would end up using on a day-to-day
-          basis going forward. This would ensure that there is a benefit to my
-          effort even if I don't really win anything.
+          fits the theme and submit it. The objective was to participate, more
+          than trying to attempt a grandiose high-impact idea that could
+          (perhaps) not be achieved in the given time frame. The other
+          objective, was to come out of the other end with a tool that I would
+          end up using on a day-to-day basis going forward. This would ensure
+          that there is a benefit to my effort even if I don't really win
+          anything.
         </p>
         <p>
           I think having this mindset provided me with the necessary motivation
@@ -410,12 +411,12 @@ while (!result.done) {
           application. It did not, which was a huge blocker. I looked into the
           docs to find that you could pass environment variables as part of the
           URL. With this I could develop a solution that could solve the core
-          problem I had, but I still had to scrap a few other ideas I had
-          because of the no public API limitation.
+          problem I had, but I still had to scrap a few other ideas because of
+          the no public API limitation.
         </p>
         <p>
-          Having run the feasibility and tweaked my plan a little, I felt that I
-          had enough to actually start the project.
+          Having run the feasibility and having tweaked my plan a little, I felt
+          confident enough to actually start the project.
         </p>
         <h2>
           Setup a minimal project with only tooling that adds to individual
@@ -427,23 +428,23 @@ while (!result.done) {
         />
         <p>
           Another important consideration is to identify your repo setup. Given
-          that I was working on the project alone, I had to choose tooling
+          that I was working on the project alone, I had to choose my tooling,
           taking this into account. For example, I chose to build the extension
           using React over Angular, because it comes with a simpler setup
           (especially beneficial for non-production applications). I chose
-          parcel over webpack because I knew parcel was sufficient for my
+          Parcel over Webpack because I knew Parcel was sufficient for my
           use-case. I only needed babel conversion and static files copy. So, it
-          would be faster to develop with parcel.
+          would be faster to develop with Parcel.
         </p>
         <p>
-          Although I am a <strong>huge</strong> typescript fan, I decided
-          against writing the application in typescript because maintaining
+          Although I am a <strong>huge</strong> Typescript fan, I decided
+          against writing the application in Typescript because maintaining
           types and interfaces is more overhead with little to no benefit. Given
-          that I was going to work solo on the project in a short time, I always
-          have the context of the entire app and types dont really add that much
-          value. Similarly, I decided not to set up linters or formatters except
-          for prettier and I decided to use Material UI to quickly build
-          components.
+          that I was going to work solo on the project over a short time, I
+          would always have the context of the entire app and types don't really
+          add much value in such situations. Similarly, I decided not to set up
+          linters or formatters except for prettier, and I decided to use
+          Material UI to quickly build components.
         </p>
         <h2>Hardcode or hack non-critical features</h2>
         <img
@@ -458,25 +459,26 @@ while (!result.done) {
           the critical stuff.
         </p>
         <p>
-          For example, I needed an AWS user with permissions for some features,
-          but instead of building a full-scale auth solution, I just registered
-          a cognito user to my identity pool and used a simple sign-in form.
+          For example, I needed an AWS user with permissions for some features.
+          But instead of building a full-scale auth solution, I just registered
+          a Cognito user to my identity pool and used a simple sign-in form.
           This way the tool is still usable on a day-to-day basis, and you can
-          add on proper auth setup at any time.
+          add on a proper auth setup at any point of time.
         </p>
         <p>
           Another example would be, I hardcoded my environment values for just
           my environments "ash1" and "ash2", meaning you don't have the ability
           to add more environments or associate your environments with your
-          cognito user. But this is not critical for your demonstration, because
-          if it works for two, it would work for N number anyway.
+          Cognito user. But this was not critical for my demonstration, because
+          if the extension worked for two, it was going to work any number 'N'.
         </p>
-        <h2>That's all, folks!</h2>
+        <h2>That's all folks!</h2>
         <p>
-          I learnt a ton participating in the event, the top 5 are what I've
-          listed above. I would love to hear from you if you disagree on any of
-          my points or have any thoughts on how to go about being more efficient
-          in developing solutions for hackathons. Hit me up on LinkedIN. :)
+          I learnt a ton participating in the event, and my top 5 takeaways are
+          what I've listed above. I would love to hear from you if you disagree
+          on any of my points or have any thoughts on how to go about being more
+          efficient in developing solutions for Hackathons. Hit me up on
+          LinkedIN. :)
         </p>
       </div>
     </div>
