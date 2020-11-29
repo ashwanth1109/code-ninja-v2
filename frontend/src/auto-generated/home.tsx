@@ -24,19 +24,22 @@ const HomePageView = () => {
             isMobile ? 'flex-col' : 'flex-row justify-between items-center'
           } mb-2`}
         >
-          <Link to="/articles/demystifying-javascript-closures">
+          <Link to="/articles/introduction-to-rxjs">
             <h3
               className={`mt-0 hover:underline ${isMobile ? 'text-2xl' : ''}`}
             >
-              Demystifying JavaScript Closures
+              Introduction to RxJS
             </h3>
           </Link>
           {!isMobile && <p className="text-lg my-0">10 mins</p>}
         </div>
         <div className="flex row items-center flex-wrap w-full">
-          <div className="date-tag">7th Nov, 2020</div>
+          <div className="date-tag">30th Nov, 2020</div>
           <div className="article-tags" style={{ backgroundColor: theme.tag }}>
-            JavaScript
+            Angular
+          </div>
+          <div className="article-tags" style={{ backgroundColor: theme.tag }}>
+            RxJS
           </div>
           <div className="article-tags" style={{ backgroundColor: theme.tag }}>
             Theory
@@ -70,6 +73,36 @@ const HomePageView = () => {
           </div>
           <div className="article-tags" style={{ backgroundColor: theme.tag }}>
             Takeaways
+          </div>
+        </div>
+      </Paper>
+
+      <Paper
+        elevation={0}
+        className="mt-8"
+        style={{ backgroundColor: theme.body.bg, color: theme.body.text }}
+      >
+        <div
+          className={`flex ${
+            isMobile ? 'flex-col' : 'flex-row justify-between items-center'
+          } mb-2`}
+        >
+          <Link to="/articles/demystifying-javascript-closures">
+            <h3
+              className={`mt-0 hover:underline ${isMobile ? 'text-2xl' : ''}`}
+            >
+              Demystifying JavaScript Closures
+            </h3>
+          </Link>
+          {!isMobile && <p className="text-lg my-0">10 mins</p>}
+        </div>
+        <div className="flex row items-center flex-wrap w-full">
+          <div className="date-tag">7th Nov, 2020</div>
+          <div className="article-tags" style={{ backgroundColor: theme.tag }}>
+            JavaScript
+          </div>
+          <div className="article-tags" style={{ backgroundColor: theme.tag }}>
+            Theory
           </div>
         </div>
       </Paper>

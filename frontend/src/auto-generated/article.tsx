@@ -10,6 +10,622 @@ interface CompProps {
 }
 
 const articles: { [fileName: string]: FunctionComponent<CompProps> } = {
+  'introduction-to-rxjs': ({ videoW, videoH }) => (
+    <div className="mb-32">
+      <h1>Introduction to RxJS</h1>
+      <div>
+        <div className="mt-8">
+          <ReactPlayer
+            url="https://www.youtube.com/watch?v=OF-x6uvHohs"
+            width={videoW || 1000}
+            height={videoH || 560}
+          />
+        </div>
+        <h2>What we'll be covering?</h2>
+        <img
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/intro-to-rxjs/contents.png"
+          alt="Contents"
+        />
+        <p>
+          In this lesson, we’ll be covering the basic concepts in Reactive
+          Programming such as Observables, Observers, Subscriptions.{' '}
+        </p>
+        <p>
+          Marble diagrams are the standard way that operators are explained in
+          the docs, so we will also look at how marble diagrams can be
+          interpreted.{' '}
+        </p>
+        <p>
+          We’ll also look at some reactive code and at the different ways of
+          creating and subscribing to observables, along with an example of
+          working with pipeable operators.{' '}
+        </p>
+        <p>
+          We’ll round it off with a comparison between a Reactive approach vs a
+          Proactive approach.
+        </p>
+        <h2>Preface</h2>
+        <p>
+          If you’ve ever worked with Angular, there’s a good chance you’ve
+          already seen RxJS in action. When I started working with the Reactive
+          programming paradigm, it took me a while to be able to think about my
+          system in a Reactive manner. I found the plethora of concepts that
+          come with the framework to be a little challenging at first.
+        </p>
+        <p>
+          While it may be tempting to just jump in and start trying to figure
+          out how to use RxJS operators from the documentation, in my
+          experience, this can lead you down a path where you don’t have a clear
+          understanding of what’s actually going on. I think it’s certainly
+          worth your time to understand the basics of what Reactive programming
+          is, and being able to{' '}
+          <strong>
+            think from a reactive perspective on how events drive your system
+          </strong>
+          , using first principles.
+        </p>
+        <h2>What is RxJS?</h2>
+        <p>
+          RxJS is a library that helps you write code in the Reactive
+          programming paradigm. A programming paradigm, in simple terms, is just
+          a way of thinking about your code. It’s a mental model of how to write
+          your code to achieve certain benefits. You’ve probably used some
+          popular paradigms such as Imperative, Object-oriented, and Functional
+          programming paradigms. Like Functional, Reactive is a declarative
+          paradigm and is in some ways an extension of the Functional paradigm,
+          in that it uses several concepts of Functional programming.{' '}
+        </p>
+        <p>
+          The Reactive paradigm is primarily concerned with{' '}
+          <strong>
+            asynchronous data streams called Observables, and the propagation of
+            change in your system
+          </strong>
+          . A Reactive application will "REACT" to events. For example, a user
+          clicking a button is an event. Your application can react to this
+          event. Observables are an alternative to promises, and in many ways
+          they can be similar but also very different. Check out this{' '}
+          <a
+            className="underline"
+            href="https://youtu.be/KOOT7BArVHQ?t=365"
+            target="_blank"
+          >
+            awesome talk from Ben Lesh on this topic
+          </a>
+          .
+        </p>
+        <h2>A real-world analogy</h2>
+        <p>
+          To understand the notion of Observables, Observers and Subscriptions,
+          I will use an analogy from the real-world, so that its easier to
+          understand these concepts. Keep in mind, that this is merely an
+          analogy, so there will be points where the two models in the analogy
+          will deviate from each other. You can think of an Observable as a
+          YouTube channel.
+        </p>
+        <img
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/intro-to-rxjs/youtube-channel.png"
+          alt="YouTube Channel"
+        />
+        <p>
+          A channel can have several events that occur. For example, it can have
+          an upload event when a video is uploaded to the channel. You can
+          subscribe to the channel, and you will get Notifications whenever the
+          channel has an event. You can react to this event, say that of a video
+          upload event by clicking on the new video to watch it. You can also
+          unsubscribe from this channel to stop receiving notifications about
+          events.{' '}
+        </p>
+        <p>
+          An observable works pretty much the same way. An observable has
+          events. You can subscribe or unsubscribe to an Observable. You get
+          notifications on events, and a subscriber can react to events.
+        </p>
+        <img
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/intro-to-rxjs/observer-subscription.png"
+          alt="Observer-Subscription"
+        />
+        <p>
+          A subscriber is called an Observer in this paradigm. From our previous
+          analogy, you as the user are the observer. You can observe the channel
+          for events. When you, the observer subscribes to a channel, you have
+          an active subscription. So, in the reactive paradigm,{' '}
+          <strong>
+            an observer can subscribe to an observable to create a subscription
+          </strong>
+          .
+        </p>
+        <h2>Interpreting marble diagrams</h2>
+        <img
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/intro-to-rxjs/event-timeline.png"
+          alt="Event Timeline"
+        />
+        <p>
+          You can distill useful information into an event timeline. In the
+          above timeline, the white arrow represents the flow of time. We are
+          typically interested in the timeline only after you subscribe and have
+          a running subscription. Our timeline starts when the "subscribe"
+          method is called. Once you subscribe, after some time, the observable
+          can have an event which is represented as a yellow dot on this
+          timeline. Whenever there is an event on the observable, the observer
+          is notified of this event. You can unsubscribe from the observable at
+          any point of time.{' '}
+        </p>
+        <p>
+          I do also want to mention here, that{' '}
+          <strong>Observables are "lazy" by nature</strong>. So, they do not
+          emit any events if there is no observer that has subscribed to it.
+          This is a bit of deviation from our analogy. Because, you can have a
+          YouTube channel with 0 subscribers and still have events occurring on
+          the channel. This event timeline gives us a very nice segway into
+          understanding "how to interpret" Marble Diagrams.
+        </p>
+        <img
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/intro-to-rxjs/marble-diagram.png"
+          alt="Marble Diagram"
+        />
+        <p>
+          The above is an example of a marble diagram. You will usually see
+          different variations of this in different sites or documentation, but
+          the way to interpret these diagrams can be extended across all these
+          sites.{' '}
+        </p>
+        <p>
+          The arrow on the top is our observable, the source for all our events.
+          As time goes on, you can have different events that can occur, either
+          spaced out or in rapid succession. The value of the event emitted can
+          be transformed before it reaches the observer using operators. You can
+          have one, or many operators that transform this data. You can even
+          have operators that dispatch side effects (for example the tap
+          operator, which is super useful for debugging purposes). An important
+          thing to note here, is that{' '}
+          <strong>
+            any event that occurs on the observable after the observer
+            unsubscribes from the observable, is not notified to the observer
+          </strong>
+          .
+        </p>
+        <h2>Creating observables</h2>
+        <p>
+          You can create an observable by importing in the "Observable" class
+          from rxjs. You use the "new" keyword to create an instance of the
+          observable class, and you need to pass in a callback as an argument to
+          the constructor.
+        </p>
+        <SyntaxHighlighter language="javascript" style={atomOneDark}>
+          {`import { Observable } from "rxjs";
+
+const observable = new Observable((subscriber) => {
+  subscriber.next(1);
+  setTimeout(() => {
+    subscriber.next(2);
+    subscriber.complete();
+  }, 1000);
+});
+
+`}
+        </SyntaxHighlighter>
+        <p>
+          Inside this callback, we ask the observable to emit events using the
+          next method. The observable will first emit the value 1. Because we
+          have a set timeout, the emission of the next value is delayed. The
+          value 2, is emitted 1000ms after the value 1 was emitted. After 2 is
+          emitted, we then call the complete method to terminate or clean up the
+          observable.{' '}
+        </p>
+        <p>
+          Like I mentioned before, because Observables are lazy by nature, the
+          observable created here is not emitting any value just yet. It needs a
+          subscriber to subscribe to it before it can emit the values 1 and 2.
+        </p>
+        <img
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/intro-to-rxjs/example-timeline.png"
+          alt="Example Timeline"
+        />
+        <p>
+          Once we have an observer which subscribes to the observable, the value
+          1 is emitted at approximately 0ms from the start of our subscription.
+          And 1000ms later, our next value 2 is emitted, and then immediately
+          after that the observable completes.
+        </p>
+        <p>
+          You would usually not create observables using the "Observable" class
+          though. Rxjs provides several utility methods that can assist you with
+          the creation of an observable. You have the “of” method which takes in
+          a series of values as parameters. Your observable will then emit these
+          values when subscribed. You can create the exact same observable using
+          the “from” method as well. The only difference here is that you would
+          pass the values to be emitted as an array.
+        </p>
+        <SyntaxHighlighter language="javascript" style={atomOneDark}>
+          {`import { from, of } from "rxjs";
+
+const observable1 = of(1, 2);
+const observable2 = from([1, 2]);
+
+`}
+        </SyntaxHighlighter>
+        <h2>Subscribing to observables</h2>
+        <p>We can subscribe to an observable using the "subscribe" method.</p>
+        <SyntaxHighlighter language="javascript" style={atomOneDark}>
+          {`import { of } from "rxjs";
+
+const observable = of(1, 2);
+
+const observer = {
+  next: (val) => console.log(val),
+  error: (err) => console.error(err),
+  complete: () => console.log("Complete"),
+};
+
+const subscription1 = observable.subscribe(observer);
+subscription1.unsubscribe();
+
+`}
+        </SyntaxHighlighter>
+        <p>
+          You can pass in an object as a parameter with the properties next,
+          error and complete defined. This object with these properties is your
+          observer. The "subscribe" method returns a subscription object. The
+          subscription object has the "unsubscribe" method, which you can call
+          to unsubscribe from the observable. Every time the observable emits a
+          value, this value is passed into the next callback. If there is an
+          error thrown in the observable, the error is passed into the error
+          callback. When the observable terminates, the complete callback is
+          invoked.
+        </p>
+        <SyntaxHighlighter language="javascript" style={atomOneDark}>
+          {`// Shorthand method
+const subscription2 = observable.subscribe(
+  (val) => console.log(val),
+  (err) => console.error(err),
+  () => console.log("Complete")
+);
+
+`}
+        </SyntaxHighlighter>
+        <p>
+          RxJS provides a shorthand way to call subscribe and pass in the next,
+          error and complete callbacks directly, instead of defining them as
+          properties in an object. This is usually the preferred way to
+          subscribe to an observable.
+        </p>
+        <h2>Working with pipeable operators</h2>
+        <p>
+          Operators are the bread and butter of the reactive paradigm. We have
+          already seen some creation operators like <strong>of</strong> and{' '}
+          <strong>from</strong>, which help with the creation of observables.{' '}
+          <strong>fromEvent</strong> is another such creation operator, that
+          helps to create observables from events, for example the click event.
+        </p>
+        <SyntaxHighlighter language="javascript" style={atomOneDark}>
+          {`import { fromEvent } from "rxjs";
+import { scan } from "rxjs/operators";
+
+fromEvent(document, "click")
+  .pipe(scan((count) => count + 1, 0))
+  .subscribe((count) => console.log("Clicked " + count + "times"));
+
+`}
+        </SyntaxHighlighter>
+        <p>
+          In the code above, we are creating an observable that will emit every
+          time a user clicks on the document or the web page. However, we don’t
+          directly call the "subscribe" method on the observable. Instead, we
+          call the "pipe" method and then chain the "subscribe" method. On each
+          click, the click event is passed through the pipe and then to the
+          observer. The pipe method is used to transform each event using
+          pipeable operators and passing on this transformed event data to the
+          observer or subscriber.{' '}
+        </p>
+        <p>
+          In the above example we see the usage of a pipeable operator, the{' '}
+          <strong>scan</strong> operator. The <strong>scan</strong> operator
+          works similar to array <strong>reduce</strong> method in javascript.
+          It takes a seed value of 0 which is set to the variable named count
+          and each time the observable emits a value, it will increment this
+          count value and pass the count value to the observer.
+        </p>
+        <img
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/intro-to-rxjs/working-with-operators.png"
+          alt="Working with Operators"
+        />
+        <h2>Why Reactive?</h2>
+        <p>
+          One question you might be asking yourself at this point is, "why
+          should I write reactive code in the first place?". There are some
+          obvious benefits listed on the [ReactiveX
+          website](http://reactivex.io/) about how Observables make your life so
+          much easier, especially when dealing with asynchronous operations.
+          But, I would like to elaborate on one other important benefit.
+        </p>
+        <img
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/intro-to-rxjs/proactive-approach.png"
+          alt="Proactive Approach"
+        />
+        <p>
+          I will try to explain this benefit using the above example which uses
+          the Proactive approach. Imagine you have 2 modules, Module1 and
+          Module2. In Module1 you have your handleClick method attached as the
+          event listener to the document. On "click", the handleClick method
+          invokes the increment method from Module2. Module2 has the counter
+          state, and an increment method which updates this state. So, in this
+          example, we have Module1 driving the state & behavior of Module2 using
+          the increment method. Therefore, we can say that{' '}
+          <strong>Module2 is passive</strong> and allows other modules to change
+          its state. This means{' '}
+          <strong>
+            Module1 is now responsible for changing Module2’s state correctly
+          </strong>
+          .
+        </p>
+        <img
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/intro-to-rxjs/reactive-approach.png"
+          alt="Reactive Approach"
+        />
+        <p>
+          In Reactive, we invert this relationship. Here we have Module1, which
+          creates a clickObservable, and we have Module2, which subscribes to
+          this observable from Module1. So, we have Module2 listening to Module1
+          for any events emitted within Module1. Thus, we can say{' '}
+          <strong>Module2 is reactive</strong> and drives its own behavior and
+          state when a click event is emitted. To re-emphasize,{' '}
+          <strong>Module2 is responsible for acting upon its own state</strong>.
+        </p>
+        <p>
+          Therefore, the benefit of Reactive here, is that it drives the
+          implementation of <strong>self-responsible modules</strong> which
+          focus on their own functionality rather than changing external state.
+          This builds on the principle of{' '}
+          <strong>Separation of Concerns</strong>, which is widely agreed upon
+          as a core principle when writing software.
+        </p>
+        <h2>Going Forward</h2>
+        <img
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/intro-to-rxjs/going-forward.png"
+          alt="Going forward"
+        />
+        <p>
+          Since this is purely an introduction to RxJS, the idea was to focus on
+          building the basics so that you can start working with the Reactive
+          paradigm on your own. Going forward, I would recommend that you look
+          into the following points:
+        </p>
+        <ul>
+          <li>
+            The biggest challenge with reactive programming is this paradigm
+            shift of being able to follow the Reactive approach over the
+            Proactive approach by default.
+          </li>
+          <li>
+            Another key challenge is that there is a multitude of operators
+            available for different situations and being able to identify which
+            operator is needed for which situation takes time and experience.
+          </li>
+          <li>
+            When working with Observables, it’s also important that you are
+            aware of the notion of Hot and Cold observables and understand when
+            you have a need for a Hot observable.
+          </li>
+          <li>
+            RxJS also has Subjects which are a special type of Observable that
+            lets you multicast values to many observers, and you will probably
+            end up needing to use Subjects very frequently. You also have more
+            specialized versions of Subjects such as BehaviorSubject,
+            ReplaySubject and AsyncSubject which can be useful based on your
+            need.
+          </li>
+          <li>
+            Another thing you should be aware off, is that you can test your
+            asynchronous RxJS code using Marble Syntax resulting tests that run
+            synchronously and deterministically.
+          </li>
+        </ul>
+        <p>
+          I plan to cover all of these concepts in future lessons. In the
+          meanwhile, I hope you’ve found this introduction an easy way to get
+          familiar with the reactive paradigm. Feel free to reach out to me on
+          [LinkedIN](https://www.linkedin.com/in/ashwanth-a-r/) or
+          [email](mailto:ashwanth1109@gmail.com) if you have any queries.
+        </p>
+        <p>Thanks for reading.</p>
+      </div>
+    </div>
+  ),
+
+  'devlauncher-hackathon-experience': ({ videoW, videoH }) => (
+    <div className="mb-32">
+      <h1>5 Takeaways From My First Hackathon Experience</h1>
+      <div>
+        <p>
+          Last week, I took part in my first ever Hackathon, and I presented a
+          tool called <strong>DevLauncher</strong>, and I'm excited to share
+          that I won the event. I had a couple of takeaways from the experience,
+          and I will share them in this article.
+        </p>
+        <p>
+          If you would like to see the results of the hackathon, you can check
+          them out [here on this
+          link](https://start.devspaces.com/devspaces-hackathon/#winners1).
+        </p>
+        <p>You can also see my submission/demo video below:</p>
+        <div className="mt-8">
+          <ReactPlayer
+            url="https://www.youtube.com/watch?v=Sr9YMOj4j48"
+            width={videoW || 1000}
+            height={videoH || 560}
+          />
+        </div>
+        <p>
+          The category of the event was to find ways to improve team
+          productivity by building extensions, or developing a workflow, with a
+          new product called <strong>DevSpaces</strong>. DevSpaces is a tool to
+          launch new environments from Github and start to code within seconds
+          of your first time looking at a repository.
+        </p>
+        <p>
+          Setting up a new project on your local (even with good README's) can
+          be painful, especially if you're new to that particular technology.
+          Typically, I've seen that new developers tend to take about a week
+          before they can hit the ground running by adding new capability to the
+          application. So, DevSpaces can be an effective{' '}
+          <strong>ease-into-the-codebase solution</strong> for onboarding new
+          developers. It can also be really helpful for code reviewers to check
+          out the context of how the code in the PR works{' '}
+          <strong>without having to switch context</strong> from their current
+          work on their local machines.
+        </p>
+        <p>
+          So, this was a product that the senior leadership was really excited
+          about. A series of Hackathons were announced to promote and integrate
+          the usage of the product into the different teams in the organization.
+        </p>
+        <h2>Understand the Hackathon objective</h2>
+        <img
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/devlauncher-hackathon-experience/event-objective.png"
+          alt="Event Objective"
+        />
+        <p>
+          While this seems obvious, its something I generally miss if I'm not
+          consciously thinking about this. I skimmed through all the info and
+          videos that the product had, as well as all info about the Hackathon,
+          to better understand the objective. I determined the primary objective
+          of the Hackathon was to get teams to adopt the product and find ways
+          to be more productive with the tool. They were looking for the tool
+          with the most impact. The most impact not just for your team, but a
+          solution that's extensible to other teams as well (even those working
+          in a different tech stack).
+        </p>
+        <p>
+          I realized that every team which uses the product would like to set up
+          their environment (be it CloudFormation or any other kind of
+          environment) because that is the single most important value
+          proposition of the product. When working in a local terminal / IDE, we
+          tend to look at our situation and determine what kind of setup we
+          want. This was not directly feasible with DevSpaces because you could
+          have only one config file (for example, we don't have config1.yml vs
+          config2.yml). This was the problem I wanted to solve to enable
+          developers to choose different setups for different situations.
+        </p>
+        <h2>Understand your objectives</h2>
+        <img
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/devlauncher-hackathon-experience/your-objective.png"
+          alt="Your Objective"
+        />
+        <p>
+          This is different from the previous point, because you can have very
+          different objectives from the intention of the event organizers. This
+          being my first hackathon, I didn't really think about winning it. I
+          just wanted to be able to complete an end-to-end tool/solution that
+          fits the theme and submit it. The objective was to participate, more
+          than trying to attempt a grandiose high-impact idea that could
+          (perhaps) not be achieved in the given time frame. The other
+          objective, was to come out of the other end with a tool that I would
+          end up using on a day-to-day basis going forward. This would ensure
+          that there is a benefit to my effort even if I don't really win
+          anything.
+        </p>
+        <p>
+          I think having this mindset provided me with the necessary motivation
+          to pull long hours over the weekend since my target was achievable
+          with certainty and had a sure benefit.
+        </p>
+        <h2>Run a feasibility study</h2>
+        <img
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/devlauncher-hackathon-experience/feasibility-study.png"
+          alt="Feasibility Study"
+        />
+        <p>
+          Given the time constraint of a hackathon (~ 3/4 days effectively), you
+          don't have the possibility to explore ideas that don't pan out at the
+          end due to technical limitations. So, its very important to identify
+          the feasibility of ideas as soon as possible. As soon as the
+          brainstorming phase is done, identify what are critical points in your
+          plan that need to be tested for feasibility. Ideally, brainstorm a
+          couple of different ways of solving the same problem you identified.
+        </p>
+        <p>
+          For my problem, I tested the feasibility of developing the solution
+          with an electron desktop app shell or a chrome extension. Both were
+          feasible to develop my solution, but chrome extension felt natural and
+          made more sense. Another critical point of testing was to identify if
+          DevSpaces had any open API that I could communicate with from my
+          application. It did not, which was a huge blocker. I looked into the
+          docs to find that you could pass environment variables as part of the
+          URL. With this I could develop a solution that could solve the core
+          problem I had, but I still had to scrap a few other ideas because of
+          the no public API limitation.
+        </p>
+        <p>
+          Having run the feasibility and having tweaked my plan a little, I felt
+          confident enough to actually start the project.
+        </p>
+        <h2>
+          Setup a minimal project with only tooling that adds to individual
+          productivity
+        </h2>
+        <img
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/devlauncher-hackathon-experience/minimal-tooling.png"
+          alt="Minimal Tooling"
+        />
+        <p>
+          Another important consideration is to identify your repo setup. Given
+          that I was working on the project alone, I had to choose my tooling,
+          taking this into account. For example, I chose to build the extension
+          using React over Angular, because it comes with a simpler setup
+          (especially beneficial for non-production applications). I chose
+          Parcel over Webpack because I knew Parcel was sufficient for my
+          use-case. I only needed babel conversion and static files copy. So, it
+          would be faster to develop with Parcel.
+        </p>
+        <p>
+          Although I am a <strong>huge</strong> Typescript fan, I decided
+          against writing the application in Typescript because maintaining
+          types and interfaces is more overhead with little to no benefit. Given
+          that I was going to work solo on the project over a short time, I
+          would always have the context of the entire app and types don't really
+          add much value in such situations. Similarly, I decided not to set up
+          linters or formatters except for prettier, and I decided to use
+          Material UI to quickly build components.
+        </p>
+        <h2>Hardcode or hack non-critical features</h2>
+        <img
+          src="https://s3.amazonaws.com/code-ninja.xyz/assets/devlauncher-hackathon-experience/hack-non-criticals.png"
+          alt="Hack your non-critical"
+        />
+        <p>
+          Given that your point is to demonstrate the critical features of the
+          application / tooling, it is probably not a good idea to spend time
+          building the necessary but non-critical features. Find ways to hack or
+          hardcode some things as per your situation so that you can focus on
+          the critical stuff.
+        </p>
+        <p>
+          For example, I needed an AWS user with permissions for some features.
+          But instead of building a full-scale auth solution, I just registered
+          a Cognito user to my identity pool and used a simple sign-in form.
+          This way the tool is still usable on a day-to-day basis, and you can
+          add on a proper auth setup at any point of time.
+        </p>
+        <p>
+          Another example would be, I hardcoded my environment values for just
+          my environments "ash1" and "ash2", meaning you don't have the ability
+          to add more environments or associate your environments with your
+          Cognito user. But this was not critical for my demonstration, because
+          if the extension worked for two, it was going to work any number 'N'.
+        </p>
+        <h2>That's all folks!</h2>
+        <p>
+          I learnt a ton participating in the event, and my top 5 takeaways are
+          what I've listed above. I would love to hear from you if you disagree
+          on any of my points or have any thoughts on how to go about being more
+          efficient in developing solutions for Hackathons. Hit me up on
+          LinkedIN. :)
+        </p>
+      </div>
+    </div>
+  ),
+
   'demystifying-javascript-closures': () => (
     <div className="mb-32">
       <h1>Demystifying JavaScript Closures</h1>
@@ -279,206 +895,6 @@ while (!result.done) {
           Closures provide you a powerful toolkit to writing modular optimized
           code. I hope that with this information you are able to leverage the
           power of closures to write better code.
-        </p>
-      </div>
-    </div>
-  ),
-
-  'devlauncher-hackathon-experience': ({ videoW, videoH }) => (
-    <div className="mb-32">
-      <h1>5 Takeaways From My First Hackathon Experience</h1>
-      <div>
-        <p>
-          Last week, I took part in my first ever Hackathon, and I presented a
-          tool called <strong>DevLauncher</strong>, and I'm excited to share
-          that I won the event. I had a couple of takeaways from the experience,
-          and I will share them in this article.
-        </p>
-        <p>
-          If you would like to see the results of the hackathon, you can check
-          them out{' '}
-          <a
-            className="underline"
-            href="https://start.devspaces.com/devspaces-hackathon/#winners1"
-            target="_blank"
-          >
-            here on this link
-          </a>
-          .
-        </p>
-        <p>You can also see my submission/demo video below:</p>
-        <div className="mt-8">
-          <ReactPlayer
-            url="https://www.youtube.com/watch?v=Sr9YMOj4j48"
-            width={videoW || 1000}
-            height={videoH || 560}
-          />
-        </div>
-        <p>
-          The category of the event was to find ways to improve team
-          productivity by building extensions, or developing a workflow, with a
-          new product called <strong>DevSpaces</strong>. DevSpaces is a tool to
-          launch new environments from Github and start to code within seconds
-          of your first time looking at a repository.
-        </p>
-        <p>
-          Setting up a new project on your local (even with good README's) can
-          be painful, especially if you're new to that particular technology.
-          Typically, I've seen that new developers tend to take about a week
-          before they can hit the ground running by adding new capability to the
-          application. So, DevSpaces can be an effective{' '}
-          <strong>ease-into-the-codebase solution</strong> for onboarding new
-          developers. It can also be really helpful for code reviewers to check
-          out the context of how the code in the PR works{' '}
-          <strong>without having to switch context</strong> from their current
-          work on their local machines.
-        </p>
-        <p>
-          So, this was a product that the senior leadership was really excited
-          about. A series of Hackathons were announced to promote and integrate
-          the usage of the product into the different teams in the organization.
-        </p>
-        <h2>Understand the Hackathon objective</h2>
-        <img
-          src="https://s3.amazonaws.com/code-ninja.xyz/assets/devlauncher-hackathon-experience/event-objective.png"
-          alt="Event Objective"
-        />
-        <p>
-          While this seems obvious, its something I generally miss if I'm not
-          consciously thinking about this. I skimmed through all the info and
-          videos that the product had, as well as all info about the Hackathon,
-          to better understand the objective. I determined the primary objective
-          of the Hackathon was to get teams to adopt the product and find ways
-          to be more productive with the tool. They were looking for the tool
-          with the most impact. The most impact not just for your team, but a
-          solution that's extensible to other teams as well (even those working
-          in a different tech stack).
-        </p>
-        <p>
-          I realized that every team which uses the product would like to set up
-          their environment (be it CloudFormation or any other kind of
-          environment) because that is the single most important value
-          proposition of the product. When working in a local terminal / IDE, we
-          tend to look at our situation and determine what kind of setup we
-          want. This was not directly feasible with DevSpaces because you could
-          have only one config file (for example, we don't have config1.yml vs
-          config2.yml). This was the problem I wanted to solve to enable
-          developers to choose different setups for different situations.
-        </p>
-        <h2>Understand your objectives</h2>
-        <img
-          src="https://s3.amazonaws.com/code-ninja.xyz/assets/devlauncher-hackathon-experience/your-objective.png"
-          alt="Your Objective"
-        />
-        <p>
-          This is different from the previous point, because you can have very
-          different objectives from the intention of the event organizers. This
-          being my first hackathon, I didn't really think about winning it. I
-          just wanted to be able to complete an end-to-end tool/solution that
-          fits the theme and submit it. The objective was to participate, more
-          than trying to attempt a grandiose high-impact idea that could
-          (perhaps) not be achieved in the given time frame. The other
-          objective, was to come out of the other end with a tool that I would
-          end up using on a day-to-day basis going forward. This would ensure
-          that there is a benefit to my effort even if I don't really win
-          anything.
-        </p>
-        <p>
-          I think having this mindset provided me with the necessary motivation
-          to pull long hours over the weekend since my target was achievable
-          with certainty and had a sure benefit.
-        </p>
-        <h2>Run a feasibility study</h2>
-        <img
-          src="https://s3.amazonaws.com/code-ninja.xyz/assets/devlauncher-hackathon-experience/feasibility-study.png"
-          alt="Feasibility Study"
-        />
-        <p>
-          Given the time constraint of a hackathon (~ 3/4 days effectively), you
-          don't have the possibility to explore ideas that don't pan out at the
-          end due to technical limitations. So, its very important to identify
-          the feasibility of ideas as soon as possible. As soon as the
-          brainstorming phase is done, identify what are critical points in your
-          plan that need to be tested for feasibility. Ideally, brainstorm a
-          couple of different ways of solving the same problem you identified.
-        </p>
-        <p>
-          For my problem, I tested the feasibility of developing the solution
-          with an electron desktop app shell or a chrome extension. Both were
-          feasible to develop my solution, but chrome extension felt natural and
-          made more sense. Another critical point of testing was to identify if
-          DevSpaces had any open API that I could communicate with from my
-          application. It did not, which was a huge blocker. I looked into the
-          docs to find that you could pass environment variables as part of the
-          URL. With this I could develop a solution that could solve the core
-          problem I had, but I still had to scrap a few other ideas because of
-          the no public API limitation.
-        </p>
-        <p>
-          Having run the feasibility and having tweaked my plan a little, I felt
-          confident enough to actually start the project.
-        </p>
-        <h2>
-          Setup a minimal project with only tooling that adds to individual
-          productivity
-        </h2>
-        <img
-          src="https://s3.amazonaws.com/code-ninja.xyz/assets/devlauncher-hackathon-experience/minimal-tooling.png"
-          alt="Minimal Tooling"
-        />
-        <p>
-          Another important consideration is to identify your repo setup. Given
-          that I was working on the project alone, I had to choose my tooling,
-          taking this into account. For example, I chose to build the extension
-          using React over Angular, because it comes with a simpler setup
-          (especially beneficial for non-production applications). I chose
-          Parcel over Webpack because I knew Parcel was sufficient for my
-          use-case. I only needed babel conversion and static files copy. So, it
-          would be faster to develop with Parcel.
-        </p>
-        <p>
-          Although I am a <strong>huge</strong> Typescript fan, I decided
-          against writing the application in Typescript because maintaining
-          types and interfaces is more overhead with little to no benefit. Given
-          that I was going to work solo on the project over a short time, I
-          would always have the context of the entire app and types don't really
-          add much value in such situations. Similarly, I decided not to set up
-          linters or formatters except for prettier, and I decided to use
-          Material UI to quickly build components.
-        </p>
-        <h2>Hardcode or hack non-critical features</h2>
-        <img
-          src="https://s3.amazonaws.com/code-ninja.xyz/assets/devlauncher-hackathon-experience/hack-non-criticals.png"
-          alt="Hack your non-critical"
-        />
-        <p>
-          Given that your point is to demonstrate the critical features of the
-          application / tooling, it is probably not a good idea to spend time
-          building the necessary but non-critical features. Find ways to hack or
-          hardcode some things as per your situation so that you can focus on
-          the critical stuff.
-        </p>
-        <p>
-          For example, I needed an AWS user with permissions for some features.
-          But instead of building a full-scale auth solution, I just registered
-          a Cognito user to my identity pool and used a simple sign-in form.
-          This way the tool is still usable on a day-to-day basis, and you can
-          add on a proper auth setup at any point of time.
-        </p>
-        <p>
-          Another example would be, I hardcoded my environment values for just
-          my environments "ash1" and "ash2", meaning you don't have the ability
-          to add more environments or associate your environments with your
-          Cognito user. But this was not critical for my demonstration, because
-          if the extension worked for two, it was going to work any number 'N'.
-        </p>
-        <h2>That's all folks!</h2>
-        <p>
-          I learnt a ton participating in the event, and my top 5 takeaways are
-          what I've listed above. I would love to hear from you if you disagree
-          on any of my points or have any thoughts on how to go about being more
-          efficient in developing solutions for Hackathons. Hit me up on
-          LinkedIN. :)
         </p>
       </div>
     </div>
